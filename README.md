@@ -82,12 +82,15 @@ Then run the code:
 python LOL_Team_Result_Sim.py
 ```
 
-You can change the team_performance parameter for your own performance standard in lines 6 through 10. You can also change the round_try parameter at line 12 to decide how many iterations you want. The larger the number, the more accurate the result.
+You can change the team_performance parameter for your performance standard in lines 6 through 10. You can also change the round_try parameter at line 12 to decide how many iterations you want. The larger the number, the more accurate the result.
 
 ## Results:
 
 Following is the result of a sample run with 1,000,000 iterations for both stages.
 > Note: From team 1 to 16, their performance is level is in decreasing order.
+
+### Figure:
+![Figure_1](https://github.com/Pansions/LOL-S13-Worlds-Swiss-Stage-V.S-Group-Stage/assets/53805355/e2f4e247-1004-46ac-aae4-be8764bfbd59)
 
 ### Swiss Stage:
 
@@ -131,8 +134,8 @@ Following is the result of a sample run with 1,000,000 iterations for both stage
 | 15 | Seed 3 / #4 League | 2 | 6.50% |
 | 16 | Seed 4 / #4 League | 1 | 3.61% |
 
-### Figure:
-![Figure_1](https://github.com/Pansions/LOL-S13-Worlds-Swiss-Stage-V.S-Group-Stage/assets/53805355/e2f4e247-1004-46ac-aae4-be8764bfbd59)
+### Conclusion:
+As we can see, although people are bragging about the fairness of the Swiss Stage. But it seems that if your team has a performance level of the top 8, your team is more likely to be promoted in the traditional group stage. However, if your team's performance is not exactly in the top 8, but hovering on the middle field, your team is more likely to be promoted to the Swiss stage. In short, the Swiss stage gives black horses more chances for promotion. The Swiss stage adds more uncertainty to the games, making it more exciting to watch. I can assume, that if another team like the DRX in S12 shows up, then we are more likely to see it in the knock-out stage if going through the Swiss stage.
 
 ### Original output text:
 
