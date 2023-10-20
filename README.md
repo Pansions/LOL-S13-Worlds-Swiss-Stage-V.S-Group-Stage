@@ -1,10 +1,10 @@
 # LOL Worlds S13: Swiss Stage V.S Group Stage
 
-Riot games has switched from traditional group stage to swiss stage before knock-off stage. There are a lot of positive comment on swiss stage. Some would even describe it as the fairest method for electing the strongest team. However, is that so? I build a small program to test it.
+Riot Games has switched from the traditional group stage to the Swiss stage before the knock-off stage. There are a lot of positive comments on the Swiss stage. Some would even describe it as the fairest method for electing the strongest team. However, is that so? I built a small program to test it.
 
 ## Dependent tools
 
-I used following third-party dependent tools:
+I used the following third-party dependent tools:
 
 - [numpy] - Math tool
 - [matplotlib] - For plotting the result
@@ -12,17 +12,17 @@ I used following third-party dependent tools:
 
 ## Explanation
 
-There are countless factors that can decide the comprehensive power for a team. Sometimes, a weaker team out-matches a stronger team as there are many examples at group stage in LOL worlds. For example, in S12, Top Esports lost to other teams which in paper, Top Esports is stronger.
+There are countless factors that can decide the comprehensive power of a team. Sometimes, a weaker team out-matches a stronger team as there are many examples at the group stage in LOL worlds. For example, in S12, Top Esports lost to other teams which in paper, Top Esports is stronger.
 
-Additionally, side choice of the map affects the overall winning rate, as in official ranked game, Blue side has the winning rate of 56%. In professional esports, this factor contributes more, as some time blue side tends to have more chance to lock a better champion composition. 
+Additionally, the side choice of the map affects the overall winning rate, as in the official ranked game, the Blue side has a winning rate of 56%. In professional esports, this factor contributes more, as sometimes the blue side tends to have more chance to lock a better champion composition. 
 
-There are many studies on what contributes to the overall strength of a team. However, we would not discuss much about it in this team. In this simple program, I simply made those team to have different performance score.
+There are many studies on what contributes to the overall strength of a team. However, we would not discuss much about it with this team. In this simple program, I made those teams have different performance scores.
 
 ## Method
 
-There are 4 major league in LOL. LPL, LCK, LCS, LEC. Everytime, the LCK and LPL tends to perform better, hence having more seats. Consider the performance difference in the past few years, there is no much difference in LPL and LCK. Thus, we consider the TOP 1 and TOP 2 league to be LPL and LCK, having 4 seats. And we set the condition so that the #1 in the second league matches the #3 in the third league.
+There are 4 major leagues in LOL. LPL, LCK, LCS, LEC. Every time, the LCK and LPL tend to perform better, hence having more seats. Considering the performance difference in the past few years, there is not much difference in LPL and LCK. Thus, we consider the TOP 1 and TOP 2 league to be LPL and LCK, having 4 seats. And we set the condition so that the #1 in the second league matches the #3 in the third league.
 
-For the rest leagues, some of them are guaranteed a seat to the group/swiss stage. Some of them must fight through the Play-In stage in order to be in the group/swiss stage. Since they are already in, I will consider them as a member of the rest of the league for convience. I will rank their strength in decreasing order. The specific allocation is at below:
+For the rest leagues, some of them are guaranteed a seat on the group/swiss stage. Some of them must fight through the Play-In stage in order to be in the group/swiss stage. Since they are already in, I will consider them as a member of the rest of the league for convenience. I will rank their strength in decreasing order. The specific allocation is shown below:
 
 | Strength Level | #1 League | #2 League | #3 League | #4 League |
 | :------: | :------: | :------: | :------: | :------: |
@@ -58,15 +58,15 @@ Thus, in decreasing order of the strength level, we have the team:
 
 > Note: You can change to your own performance level at the top (line 6 to line 10).
 
-Thus, with a performance level giving, we can decide which team is stronger conveniently. However, in real world, like I mentioned before, a strong team would not necessarily win. Thus, I design the following mechanism:
+Thus, with a performance level giving, we can decide which team is stronger conveniently. However, in the real world, as I mentioned before, a strong team would not necessarily win. Thus, I design the following mechanism:
 
 - There are 5% chance that the weaker team wins directly.
-- A performance difference of 1 would have chance to be added to the game as another suprise factor.
-- If performance difference is the same, there are 56% chance that the blue team wins, in this case, team 1. Since team 1 compares to team 1 is higher on the seed table, which has the right to choose side, which would grants them a advantage.
+- A performance difference of 1 would have a chance to be added to the game as another surprise factor.
+- If the performance difference is the same, there are 56% chance that the blue team wins, in this case, team 1. Since team 1 compared to team 1 is higher on the seed table, which has the right to choose a side, which would grant them an advantage.
 
 ## Running
 
-Install the python interpreter first, then install numpy and matplotlib in an open terminal. Press Win + R, type in "powershell", then hit enter.
+Install the Python interpreter first, then install numpy and matplotlib in an open terminal. Press Win + R, type in "powershell", then hit enter.
 
 Type the following command in each line to install:
 ```sh
@@ -82,11 +82,11 @@ Then run the code:
 python LOL_Team_Result_Sim.py
 ```
 
-You can change the team_performance parameter for your own performance standard in line 6 through 10. You can also change the round_try parameter at line 12 to decide how many iteration you want. Larger the number, more accurate the result.
+You can change the team_performance parameter for your own performance standard in lines 6 through 10. You can also change the round_try parameter at line 12 to decide how many iterations you want. The larger the number, the more accurate the result.
 
 ## Results:
 
-Following is the result of a sample run with 1,000,000 iteration for both stage.
+Following is the result of a sample run with 1,000,000 iterations for both stages.
 > Note: From team 1 to 16, their performance is level is in decreasing order.
 
 ### Swiss Stage:
