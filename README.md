@@ -1,4 +1,4 @@
-# LOL Worlds S13: Swiss Stage V.S Group Stage
+# LOL Worlds S13: Swiss Stage V.S Group Stage: Chance of promoting to the knock-out stage.
 
 Riot Games has switched from the traditional group stage to the Swiss stage before the knock-off stage. There are a lot of positive comments on the Swiss stage. Some would even describe it as the fairest method for electing the strongest team. However, is that so? I built a small program to test it.
 
