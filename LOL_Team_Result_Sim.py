@@ -1,9 +1,17 @@
 import numpy as np
 from matplotlib import pyplot as plt
+from progress.bar import Bar
 
 # Global variable: team ability and their number
-team_ab = np.array([42,41,40,39,33,32,31,30,24,23,22,21,20,19,18,17])
+# Make change to your variable here:
+team_performance = np.array([9,8,7,6,            #1 League
+                                 7,6,5,4,        #2 League
+                                     5,4,3,2,    #3 League
+                                       4,3,2,1]) #4 League
+team_ab = np.sort(team_performance)[::-1]
 team_no = np.array([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])
+
+round_try = 1000000
 
 
 class team_struct():
@@ -15,23 +23,44 @@ class team_struct():
         self.team_temp_lose = 0
         
     def game(self, team_s_2):
+        def self_win():
+            self.team_temp_win += 1
+            team_s_2.team_temp_lose += 1
+        
+        def self_lose():
+            self.team_temp_lose += 1
+            team_s_2.team_temp_win +=1
         # Team ability diff
         ability_diff = self.team_ability - team_s_2.team_ability
         
+        
         # Blue has 56% percent of wining.
         # Ability diff can be make up if one gots blue.
-        blue_suprise = np.random.randint(-8,8)
-        ability_diff += blue_suprise
+        suprise2 = np.random.randint(-1,2)
+        ability_diff += suprise2
         
         
-        # Suprise factor, each team has 5% chance of wining
+        # Suprise factor, weaker team has 5% chance of wining
+        suprise = np.random.randint(0,100)
         if ability_diff > 0:
-            self.team_temp_win += 1
-            team_s_2.team_temp_lose += 1
-        else:   
-            self.team_temp_lose += 1
-            team_s_2.team_temp_win +=1
-            
+            if suprise < 95:
+                self_win()
+            else:   
+                self_lose()
+        elif ability_diff < 0:
+            if suprise < 95:
+                self_lose()
+            else:   
+                self_win()
+        elif ability_diff == 0:
+            suprise3 = np.random.randint(0,100)
+            if suprise3 > 56:
+                self_lose()
+            else:
+                self_win()
+    
+        
+    
 # Swiss Stage Game Play
 def ss(team_ss):
     # Assign the group
@@ -208,7 +237,6 @@ def main():
     # Generate Teams:
     # 16 teams in total, ability ranked in orders.
     # Team with greater ability out ranks the lower ones. However, the lower one has 5% chance of wining.
-    team_ab = np.array([42,41,40,39,33,32,31,30,24,23,22,21,20,19,18,17])
     team_no = np.array([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])
     
     # Swiss Stage Teams
@@ -219,9 +247,11 @@ def main():
     
     # Swiss System Plays
     ss_count = 0
-    for i in range(0, 10000):
-        ss(team_ss)
-        ss_count += 1
+    with Bar('Calculating Swiss Stage...', max = round_try) as bar:
+        for i in range(0, round_try):
+            ss(team_ss)
+            ss_count += 1
+            bar.next()
     
     # Traditional Group stage
     team_gs = []
@@ -231,9 +261,11 @@ def main():
     
     # Group stage plays
     gs_count = 0
-    for i in range(0, 10000):
-        gs(team_gs)
-        gs_count += 1
+    with Bar('Calculating Group Stage...', max = round_try) as bar2:
+        for i in range(0, round_try):
+            gs(team_gs)
+            gs_count += 1
+            bar2.next()
     
     # Calculate the win rates
     win_rate_ss = np.zeros((16))
@@ -244,10 +276,36 @@ def main():
     for i, t in enumerate(team_gs):
         win_rate_gs[i] = t.team_win / gs_count
         
+    # Text output:
+    print()
+    print("For the swiss stage, The percentage for promption from team 1 to team 16 with decreasing performance level is:")
+    for i, wr in enumerate(win_rate_ss):
+        print(f"Team {i+1}: {wr*100:.2f}%", end = "")
+        if i != len(win_rate_ss)-1: print(";", end = "   ")
+        else: print(".")
+    
+    print()
+    print("For the traditional group stage, The percentage for promotion from team 1 to team 16 with decreasing performance level is:")
+    for i, wr in enumerate(win_rate_gs):
+        print(f"Team {i+1}: {wr*100:.2f}%", end = "")
+        if i != len(win_rate_ss)-1: print(";", end = "   ")
+        else: print(".", end = "\n\n")
+    
     # Plot the figures
     plt.figure()
-    plt.plot(team_no, (win_rate_ss*100))
-    plt.plot(team_no, (win_rate_gs*100))
+    plt.grid()
+    # Plot the swiss stage
+    plt.plot(team_no, (win_rate_ss*100), label = 'swiss')
+    # for i, j in zip(team_no, (win_rate_ss*100)):
+    #     plt.text(i, j, f'{j:.1f}', ha = 'right')
+    # Plot the group stage
+    plt.plot(team_no, (win_rate_gs*100), label = 'group')
+    # Name the axis
+    plt.xticks([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16',])
+    plt.yticks([0,10,20,30,40,50,60,70,80,90,100], ['0%','10%','20%','30%','40%','50%','60%','70%','80%','90%','100%',])
+    plt.xlabel("team number")
+    plt.ylabel("percentage of promotion")
+    plt.legend()
     plt.show()
     
     
