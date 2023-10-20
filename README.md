@@ -135,10 +135,10 @@ Following is the result of a sample run with 1,000,000 iteration for both stage.
 ![Figure_1](https://github.com/Pansions/LOL-S13-Worlds-Swiss-Stage-V.S-Group-Stage/assets/53805355/e2f4e247-1004-46ac-aae4-be8764bfbd59)
 
 ### Original output text:
-```sh
-For the Swiss stage, The percentage for promotion from team 1 to team 16 with decreasing performance level is:
+
+> For the Swiss stage, The percentage for promotion from team 1 to team 16 with decreasing performance level is:
 Team 1: 98.84%;   Team 2: 95.16%;   Team 3: 82.78%;   Team 4: 82.83%;   Team 5: 63.55%;   Team 6: 63.28%;   Team 7: 46.67%;   Team 8: 46.67%;   Team 9: 29.74%;   Team 10: 29.75%;   Team 11: 29.79%;   Team 12: 10.71%;   Team 13: 10.69%;   Team 14: 1.65%;   Team 15: 1.64%;   Team 16: 0.20%.
 
-For the traditional group stage, The percentage for promotion from team 1 to team 16 with decreasing performance level is:
+> For the traditional group stage, The percentage for promotion from team 1 to team 16 with decreasing performance level is:
 Team 1: 90.66%;   Team 2: 90.60%;   Team 3: 90.61%;   Team 4: 90.64%;   Team 5: 90.87%;   Team 6: 90.88%;   Team 7: 83.60%;   Team 8: 83.63%;   Team 9: 13.98%;   Team 10: 13.99%;   Team 11: 13.98%;   Team 12: 14.99%;   Team 13: 12.15%;   Team 14: 9.32%;   Team 15: 6.50%;   Team 16: 3.61%.
-```
+
